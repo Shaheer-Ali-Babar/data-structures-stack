@@ -1,0 +1,45 @@
+#include <iostream>
+#include <vector>
+
+class Stack {
+private:
+    std::vector<int> items;
+
+public:
+    // Push an item onto the stack
+    void push(int item) {
+        items.push_back(item);
+    }
+
+    // Pop an item from the stack
+    int pop() {
+        if (!is_empty()) {
+            int top = items.back();
+            items.pop_back();
+            return top;
+        }
+        return -1; // Return -1 if the stack is empty
+    }
+
+    // Peek at the top item of the stack without removing it
+    int peek() {
+        if (!is_empty()) {
+            return items.back();
+        }
+        return -1; // Return -1 if the stack is empty
+    }
+
+    // Check if the stack is empty
+    bool is_empty() {
+        return items.empty();
+    }
+};
+
+int main() {
+    Stack stack;
+    stack.push(1);
+    stack.push(2);
+    std::cout << stack.pop() << std::endl;  // Output: 2
+    std::cout << stack.peek() << std::endl; // Output: 1
+    return 0;
+}
